@@ -19,7 +19,10 @@ def create_app() -> FastAPI:
         version='0.1.0',
         description='AI-powered review API for HZAU news drafts.',
     )
-    cors_origins = os.getenv('CORS_ORIGINS', 'http://localhost:5173').split(',')
+    cors_origins = os.getenv(
+        'CORS_ORIGINS',
+        'http://localhost:5173,https://litchi3914.github.io',
+    ).split(',')
     app.add_middleware(
         CORSMiddleware,
         allow_origins=[origin.strip() for origin in cors_origins if origin.strip()],
