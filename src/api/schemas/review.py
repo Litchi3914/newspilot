@@ -84,6 +84,7 @@ class ReviewMetadata(BaseModel):
     input_char_count: Optional[int] = None
     output_char_count: Optional[int] = None
     latency_ms: Optional[int] = None
+    storage_status: Optional[Literal['disabled','saved','failed']] = None
 
 class ReviewData(BaseModel):
     original: Dict[str, str] = Field(default_factory=dict)

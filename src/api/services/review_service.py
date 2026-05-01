@@ -7,6 +7,7 @@ import time
 from src.api.schemas.review import ReviewRequest, ReviewResponse, ReviewMetadata
 from src.api.schemas.errors import APIError, ErrorCode
 from src.reviewer.review_pipeline import ReviewPipeline
+from src.storage.review_record_store import is_review_record_storage_enabled, save_review_record
 
 
 def _append_api_log(path: str, row: dict):
@@ -101,6 +102,32 @@ class ReviewService:
                 errors=errors,
                 metadata=meta,
             )
+            if is_review_record_storage_enabled():
+                saved = save_review_record(
+                    request_id=request_id,
+                    title=request.title,
+                    input_text=request.draft_text,
+                    revised_text=resp.revised_text,
+                    issues=resp.issues,
+                    diff_result=[op.model_dump(mode='json') for op in resp.diff_ops],
+                    raw_result={
+                        'status': resp.status,
+                        'api_version': resp.api_version,
+                        'pipeline_version': resp.pipeline_version,
+                        'detected_type': resp.detected_type,
+                        'summary': resp.summary,
+                        'errors': [e.model_dump(mode='json') for e in resp.errors],
+                    },
+                    options=request.options.model_dump(mode='json'),
+                    client_meta={
+                        'source': request.source,
+                        'review_mode': request.review_mode,
+                        'article_type': request.article_type,
+                    },
+                )
+                resp.metadata.storage_status = 'saved' if saved else 'failed'
+            else:
+                resp.metadata.storage_status = 'disabled'
             _append_api_log(self.api_log_path, {
                 'request_id': request_id,
                 'path': '/api/v1/review',
