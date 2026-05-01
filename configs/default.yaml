@@ -1,0 +1,17 @@
+﻿project:
+  name: newspilot
+  version: 0.1.0
+
+paths:
+  raw_jsonl: data/raw_jsonl/articles_raw.jsonl
+  clean_jsonl: data/clean_jsonl/articles_clean.jsonl
+  structured_csv: data/structured/articles_structured.csv
+  labeled_csv: data/structured/articles_labeled.csv
+  chunks_jsonl: data/chunks/article_chunks.jsonl
+  indexes_dir: data/indexes
+  logs_dir: data/logs
+  outputs_dir: outputs
+
+runtime:
+  random_seed: 42
+  log_level: INFO

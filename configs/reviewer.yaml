@@ -1,0 +1,5 @@
+﻿review:
+  enable_retrieval: true
+  enable_llm_revision: true
+  enable_diff: true
+  retriever: bm25

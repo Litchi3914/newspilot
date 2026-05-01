@@ -1,0 +1,11 @@
+﻿requests
+beautifulsoup4
+lxml
+pandas
+tqdm
+python-dotenv
+pydantic
+fastapi
+uvicorn[standard]
+loguru
+

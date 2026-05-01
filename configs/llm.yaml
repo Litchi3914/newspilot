@@ -1,0 +1,20 @@
+﻿provider: mock
+enable_real_call: false
+
+mock:
+  response_mode: fixed
+  response_path: data/mock/llm_review_response.json
+
+openai:
+  model: gpt-4.1-mini
+  base_url: ""
+  api_key_env: OPENAI_API_KEY
+  timeout_seconds: 60
+  max_retries: 2
+  temperature: 0.2
+  enable_structured_output: true
+  store: false
+
+logging:
+  enabled: true
+  log_path: data/logs/llm_call_log.csv

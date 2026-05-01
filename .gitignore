@@ -1,0 +1,32 @@
+﻿# runtime
+.env
+__pycache__/
+*.pyc
+
+# frontend dependencies and build outputs
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/tsconfig.tsbuildinfo
+
+# data outputs
+/data/raw_html/*
+/data/raw_jsonl/*.jsonl
+/data/clean_jsonl/*.jsonl
+/data/structured/*.csv
+/data/chunks/*.jsonl
+/data/logs/*.csv
+/data/backups/
+/data/demo_outputs/
+/data/indexes/
+/outputs/
+/reports/
+
+# keep dirs
+!/data/raw_html/.gitkeep
+!/data/raw_jsonl/.gitkeep
+!/data/clean_jsonl/.gitkeep
+!/data/structured/.gitkeep
+!/data/chunks/.gitkeep
+!/data/logs/.gitkeep
+

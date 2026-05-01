@@ -1,0 +1,47 @@
+{
+  "created_at": "2026-04-29T18:13:04",
+  "llm": {
+    "provider": "openai",
+    "model": "Qwen/Qwen3-8B",
+    "base_url": "https://api.siliconflow.cn/v1",
+    "enable_real_call": true,
+    "api_key_env": "OPENAI_API_KEY",
+    "api_key_present": true,
+    "endpoint_ok": true,
+    "endpoint_message": "sdk_chat_ok: ok"
+  },
+  "embedding": {
+    "provider": "none",
+    "model": "bge-m3",
+    "base_url": "",
+    "endpoint_ok": true,
+    "endpoint_message": "skipped (embedding sdk probe not enabled in preflight)"
+  },
+  "vectorstore": {
+    "backend": "faiss",
+    "ready": true,
+    "message": "ok"
+  },
+  "python_deps": {
+    "openai": {
+      "installed": true,
+      "message": "ok"
+    },
+    "pymilvus": {
+      "installed": true,
+      "message": "ok"
+    },
+    "chromadb": {
+      "installed": true,
+      "message": "ok"
+    },
+    "faiss": {
+      "installed": true,
+      "message": "ok"
+    }
+  },
+  "summary": {
+    "ready": true,
+    "hard_failures": []
+  }
+}
